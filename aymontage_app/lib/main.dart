@@ -16,6 +16,7 @@ class Aymoontage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       routes:
       {
         LoggedOutScreen.id: (context) => LoggedOutScreen(),
