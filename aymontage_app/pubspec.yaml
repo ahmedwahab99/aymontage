@@ -10,12 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^0.1.2
+  google_fonts: ^1.1.0
+  sign_button: ^0.0.6
 
 dev_dependencies:
   flutter_test:
-    sdk: flutter
+    sdk: flutter  
 
 
 flutter:
