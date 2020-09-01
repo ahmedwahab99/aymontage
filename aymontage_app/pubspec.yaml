@@ -13,6 +13,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   google_fonts: ^1.1.0
   sign_button: ^0.0.6
+  google_nav_bar: ^3.0.0
+  line_icons: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +27,8 @@ flutter:
 
   assets:
     - images/loggedOut_page.jpg
+    - images/post1_example.jpg
+    - images/post2_example.jpg
+    - images/post3_example.jpg
+    - images/post4_example.jpg
+    - images/post5_example.jpg

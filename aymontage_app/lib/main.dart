@@ -3,11 +3,13 @@ import 'View/Screens/LoggedOut_Screen.dart';
 import 'View/Screens/Activity_Screen.dart';
 import 'View/Screens/Feed_Screen.dart';
 import 'View/Screens/LogIn_Screen.dart';
+import 'View/Screens/Parent Page.dart';
 import 'View/Screens/Post_in_Fullscreen.dart';
 import 'View/Screens/Register_Screen.dart';
 import 'View/Screens/Saved_posts_Screen.dart';
 import 'View/Screens/Settings_Screen.dart';
 import 'View/Screens/Videos_Screen.dart';
+
 
 void main() => runApp(Aymoontage());
 
@@ -28,6 +30,7 @@ class Aymoontage extends StatelessWidget {
         Saved_posts_Screen.id: (context)=>Saved_posts_Screen(),
         Settings_Screen.id: (context)=>Settings_Screen(),
         Videos_Screen.id: (context)=>Videos_Screen(),
+        TopScreen.id: (context)=>TopScreen(),
       },
       initialRoute: LoggedOutScreen.id,
 

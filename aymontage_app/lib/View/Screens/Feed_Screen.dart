@@ -1,3 +1,6 @@
+import 'package:aymontage_app/View/Widgets/ExpandableAppBar.dart';
+import 'package:aymontage_app/View/Widgets/News_List.dart';
+import 'package:aymontage_app/View/Widgets/Post_Box.dart';
 import 'package:flutter/material.dart';
 
 class Feed_Screen extends StatefulWidget{
@@ -5,11 +8,12 @@ class Feed_Screen extends StatefulWidget{
   @override
   _Feed_ScreenState createState() => _Feed_ScreenState();
 }
-const double kExpandedHeight=150;
+
+
 
 class _Feed_ScreenState extends State<Feed_Screen> {
-  ScrollController _scrollController;
 
+  ScrollController _scrollController;
 
   @override
   void initState() {
@@ -18,10 +22,7 @@ class _Feed_ScreenState extends State<Feed_Screen> {
     _scrollController = ScrollController()
       ..addListener(() => setState(() {}));
   }
-  bool get _showTitle {
-    return _scrollController.hasClients
-        && _scrollController.offset > kExpandedHeight - kToolbarHeight;
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,34 +31,18 @@ class _Feed_ScreenState extends State<Feed_Screen> {
         controller: _scrollController,
         slivers: <Widget> [
 
-          SliverAppBar(
-            //leading: Container(),
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.grey[900],
-            expandedHeight: kExpandedHeight,
-            floating: false,
-            pinned: true,
-            snap: false,
-            title: _showTitle? Center(child: Text('Latest News', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)) : null,
+          ExpandableAppBar(title: 'Latest', scrollController: _scrollController,),
+          SliverList(
+            delegate: SliverChildListDelegate(NewsList().getNews())
 
-            flexibleSpace:  _showTitle ? null : FlexibleSpaceBar(
-              title: Text('Latest News', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-              titlePadding: EdgeInsets.only(left: 15),
-            ),
-          ),
-          SliverFillRemaining(
-            child: Column(
-              children: [
-                Container(
-                  
-                )
-              ],
-            ),
+
           ),
 
         ],
       ),
-    ) ;
+
+
+    );
   }
 }
 
@@ -83,3 +68,4 @@ class text_posts_provider
 }
 
 /////////////////////////////////////////
+

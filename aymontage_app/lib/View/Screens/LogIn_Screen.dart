@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:sign_button/sign_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'Parent Page.dart';
+
 class Login_Screen extends StatefulWidget {
   static const String id="login_screen";
   @override
@@ -50,7 +52,7 @@ class _Login_ScreenState extends State<Login_Screen> {
 
                         //TODO:navigate to google autherization
 
-                        Navigator.pushNamed(context, Feed_Screen.id);
+                        Navigator.pushNamed(context, TopScreen.id);
                       },
                     elevation: 20,
                     buttonSize: ButtonSize.large,
