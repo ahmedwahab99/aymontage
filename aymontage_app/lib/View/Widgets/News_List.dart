@@ -1,3 +1,5 @@
+import 'package:aymontage_app/Controller/Post_Manager.dart';
+import 'package:aymontage_app/Model/Post.dart';
 import 'package:flutter/material.dart';
 import 'Post_Box.dart';
 
@@ -5,7 +7,7 @@ class NewsList  {
 
   NewsList()
   {
-    addNews();
+    pullAllPosts();
   }
 
   List <PostBox> _news=[];
@@ -15,18 +17,21 @@ class NewsList  {
     return _news;
   }
 
-  void addNews()
+  void pullAllPosts()
   {
-    _news.add(PostBox(title:'Interview with Illustrator & Animator Greg Gunn of Blind' ,imagePath:'images/post1_example.jpg' ,));
-    _news.add(PostBox(title:'Studio Spotlight: Psyop is an Industry Titan' ,imagePath:'images/post2_example.jpg' ,));
-    _news.add( PostBox(title: 'Industry Spotlight: Gentleman Scholar',imagePath: 'images/post3_example.jpg',));
-    _news.add(PostBox(title: 'Jorge Canedo Estrada on the Motion Graphics Industry & What’s Shaped his Career',imagePath: 'images/post4_example.jpg',));
-    _news.add(PostBox(title:'Oddfellows Studio Spotlight: Illustrated Looks & Compelling Stories' ,imagePath:'images/post5_example.jpg' ,));
-
+    List<PostBox> temp=[];
+    for(Post p in PostManager().getPostsFromPostList())
+      {
+        PostBox box=PostBox(post: p);
+        temp.add(box);
+      }
+    _news=temp;
   }
 
+  void pullNewPosts()
+  {}
 
 
-
+//TODO: MAKE THIS EFFEICIENT BY USING RECYCLE LISTED LIST ALTER.
 
 }

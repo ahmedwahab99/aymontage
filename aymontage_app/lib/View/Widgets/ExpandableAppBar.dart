@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'Menu_Button.dart';
 import 'package:line_icons/line_icons.dart';
 
-const double kExpandedHeight=90;
 
 class ExpandableAppBar extends StatelessWidget {
-  ExpandableAppBar({@required this.title, @required this.scrollController });
+  ExpandableAppBar({this.title, this.scrollController , this.kExpandedHeight=90, this.backgroundImage, this.hasAction=false, this.hasLeading=false, }) ;
 
+  bool hasAction, hasLeading;
   ScrollController scrollController;
   String title;
-
+  AssetImage backgroundImage;
+  double kExpandedHeight;
 
   bool get _showTitle {
     return scrollController.hasClients
@@ -19,9 +20,13 @@ class ExpandableAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      actions:  <Widget> [
+      actions: hasAction==false?null:<Widget> [
         MenuButton()
       ],
+      leading: hasLeading==false?null: FlatButton(
+        child:Icon( Icons.arrow_back_ios) ,
+        onPressed: (){ Navigator.pop(context); },
+      ),
 
       automaticallyImplyLeading: false,
       backgroundColor: Colors.grey[900],
@@ -31,15 +36,16 @@ class ExpandableAppBar extends StatelessWidget {
       snap: false,
       title: _showTitle? Center(
           child: Padding(
-          padding: const EdgeInsets.only(left: 65),
-          child: Text(
-               title,
-               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-      )) : null,
+            padding: const EdgeInsets.only(left: 65),
+            child: Text(
+              title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          )) : null,
       flexibleSpace:  _showTitle ? null : FlexibleSpaceBar(
         title: Text(title, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
         titlePadding: EdgeInsets.only(left: 15),
+
       ),
     );
   }

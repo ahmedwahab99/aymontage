@@ -31,9 +31,15 @@ class _Feed_ScreenState extends State<Feed_Screen> {
         controller: _scrollController,
         slivers: <Widget> [
 
-          ExpandableAppBar(title: 'Latest', scrollController: _scrollController,),
+          ExpandableAppBar(title: 'Latest', scrollController: _scrollController, hasAction: true),
           SliverList(
-            delegate: SliverChildListDelegate(NewsList().getNews())
+              delegate: SliverChildBuilderDelegate(
+                  (context, index)
+                      {
+                        return NewsList().getNews()[index];
+                      },
+                childCount: NewsList().getNews().length,
+              )
 
 
           ),
@@ -45,27 +51,4 @@ class _Feed_ScreenState extends State<Feed_Screen> {
     );
   }
 }
-
-
-///TESTINg//////
-class poost
-{
-  poost({this.text,this.image});
-
-  String text;
-  AssetImage image;
-}
-
-class text_posts_provider
-{
-  List <poost> posts=[];
-
-  poost post1 = poost(text: 'Interview with Illustrator & Animator Greg Gunn of Blind',image: new AssetImage('images/post1_example.jpg') );
-  poost post2 = poost(text: 'Studio Spotlight: Psyop is an Industry Titan',image: new AssetImage('images/post2_example.jpg') );
-  poost post3 = poost(text: 'Industry Spotlight: Gentleman Scholar',image: new AssetImage('images/post3_example.jpg') );
-  poost post4 = poost(text: 'Jorge Canedo Estrada on the Motion Graphics Industry & What’s Shaped his Career',image: new AssetImage('images/post4_example.jpg') );
-  poost post5 = poost(text: 'Oddfellows Studio Spotlight: Illustrated Looks & Compelling Stories',image: new AssetImage('images/post5_example.jpg') );
-}
-
-/////////////////////////////////////////
 
